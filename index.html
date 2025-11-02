@@ -4,115 +4,141 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-<title>🎨 Cria Färgsnurra – Kulörteori</title>
-<style>
-  /* ====== Scoped till färgblandaren ====== */
-  .cria-mixer {
-    font-family:"Helvetica Neue",Arial,sans-serif;
-    background:#f7f7f7; color:#222; text-align:center;
-    margin:30px;
-  }
-  .cria-mixer h1{font-size:28px;margin-bottom:10px}
+  <title>🎨 Cria Färgsnurra – Kulörteori</title>
+  <style>
+    /* ====== Scoped till färgblandaren ====== */
+    .cria-mixer {
+      font-family:"Helvetica Neue",Arial,sans-serif;
+      background:#f7f7f7; color:#222; text-align:center;
+      margin:30px;
+    }
+    .cria-mixer h1{font-size:28px;margin-bottom:10px}
 
-  .cria-mixer .mixer{
-    max-width:720px;
-    margin:0 auto;background:#fff;padding:24px 28px;
-    border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.12)
-  }
+    .cria-mixer .mixer{
+      max-width:720px;
+      margin:0 auto;background:#fff;padding:24px 28px;
+      border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.12)
+    }
 
-  /* Hjälp-knapp (inuti kortet, centrerad) */
-  .cria-mixer .info-row{display:flex;justify-content:center;margin-bottom:12px}
-  .cria-mixer .help-btn{
-    padding:8px 14px;border:none;border-radius:999px;
-    background:#4a5568;color:#fff;cursor:pointer;font-weight:600;
-    box-shadow:0 1px 0 rgba(0,0,0,.08)
-  }
-  .cria-mixer .help-btn:hover{background:#2d3748}
+    /* Hjälp-knapp (inuti kortet, centrerad) */
+    .cria-mixer .info-row{display:flex;justify-content:center;margin-bottom:12px}
+    .cria-mixer .help-btn{
+      padding:8px 14px;border:none;border-radius:999px;
+      background:#4a5568;color:#fff;cursor:pointer;font-weight:600;
+      box-shadow:0 1px 0 rgba(0,0,0,.08)
+    }
+    .cria-mixer .help-btn:hover{background:#2d3748}
 
-  .cria-mixer .view-buttons{display:flex;gap:10px;justify-content:center;margin:12px 0 18px}
-  .cria-mixer .slider-group{display:flex;align-items:center;justify-content:space-between;margin:12px 0}
-  .cria-mixer label{display:flex;align-items:center;font-weight:700;width:180px}
-  .cria-mixer .color-box{width:24px;height:24px;border-radius:6px;margin-right:10px;border:1px solid #aaa;background:#eee}
-  .cria-mixer input[type="range"]{width:55%}
-  .cria-mixer input[type="number"]{
-    width:64px;margin-left:10px;text-align:center;border:1px solid #d0d5dd;border-radius:8px;padding:4px 6px
-  }
+    .cria-mixer .view-buttons{display:flex;gap:10px;justify-content:center;margin:12px 0 18px}
 
-  .cria-mixer #cria-result{
-    width:200px;height:200px;border-radius:20px;border:1px solid #e4e7ec;margin:22px auto;
-    box-shadow:inset 0 0 0 1px rgba(0,0,0,.03)
-  }
-  .cria-mixer button{padding:10px 16px;border:none;border-radius:10px;background:#2b6cb0;color:#fff;cursor:pointer;font-weight:600}
-  .cria-mixer button:hover{background:#2c5282}
-  .cria-mixer .active{background:#1e4e86}
-  .cria-mixer #cria-mlControl{margin:6px 0 12px}
-  .cria-mixer .hint{font-size:14px; color:#3a3a3a}
+    .cria-mixer .slider-group{
+      display:flex;align-items:center;justify-content:space-between;margin:12px 0; gap:12px;
+    }
+    .cria-mixer label{display:flex;align-items:center;font-weight:700;width:180px}
+    .cria-mixer .color-box{width:24px;height:24px;border-radius:6px;margin-right:10px;border:1px solid #aaa;background:#eee}
 
-  /* Palett */
-  .cria-mixer .palette{display:flex;flex-wrap:wrap;justify-content:center;margin-top:30px;gap:20px}
-  .cria-mixer .swatch-card{width:130px;display:flex;flex-direction:column;align-items:center}
-  .cria-mixer .swatch{width:100px;height:100px;border-radius:14px;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.14)}
-  .cria-mixer .delete{position:absolute;top:6px;right:8px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:20px;height:20px;cursor:pointer;font-size:12px;line-height:20px}
-  .cria-mixer .delete:hover{background:#ef4444}
-  .cria-mixer .swatch-info{width:100%;margin-top:8px;font-size:11px;color:#333}
-  .cria-mixer .name-input{width:100%;font-size:12px;border:none;text-align:center;border-bottom:1px solid #e5e7eb;outline:none;padding:2px 0}
-  .cria-mixer .recipe-line{margin-top:6px;font-size:11px;color:#6b7280;white-space:nowrap;text-align:center}
+    /* Gör range flexibel – fyll utrymmet mellan label och number */
+    .cria-mixer input[type="range"]{flex:1; width:auto}
 
-  .cria-mixer .help-line{font-size:12px;color:#555;margin-top:4px}
+    .cria-mixer input[type="number"]{
+      width:64px;margin-left:10px;text-align:center;border:1px solid #d0d5dd;border-radius:8px;padding:4px 6px
+    }
 
-  /* Legend */
-  .cria-mixer .cria-legend{
-    display:flex; flex-direction:row; align-items:center; justify-content:center;
-    gap:14px; flex-wrap:nowrap; margin-top:8px; width:100%;
-  }
-  .cria-mixer .cria-legend__item{display:flex;align-items:center;gap:8px}
-  .cria-mixer .cria-legend__icon{width:18px;height:18px;color:#555;flex:0 0 auto}
-  .cria-mixer .cria-legend__text{font-size:13px;color:#222}
+    .cria-mixer #cria-result{
+      width:200px;height:200px;border-radius:20px;border:1px solid #e4e7ec;margin:22px auto;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.03)
+    }
+    .cria-mixer button{padding:10px 16px;border:none;border-radius:10px;background:#2b6cb0;color:#fff;cursor:pointer;font-weight:600}
+    .cria-mixer button:hover{background:#2c5282}
+    .cria-mixer .active{background:#1e4e86}
+    .cria-mixer #cria-mlControl{margin:6px 0 12px}
+    .cria-mixer .hint{font-size:14px; color:#3a3a3a}
 
-  @media (max-width:360px){
-    .cria-mixer .cria-legend{ flex-wrap:wrap; gap:10px }
-    .cria-mixer .cria-legend__text{ font-size:12px }
-    .cria-mixer .cria-legend__icon{ width:16px; height:16px }
-  }
+    /* Palett */
+    .cria-mixer .palette{display:flex;flex-wrap:wrap;justify-content:center;margin-top:30px;gap:20px}
+    .cria-mixer .swatch-card{width:130px;display:flex;flex-direction:column;align-items:center}
+    .cria-mixer .swatch{width:100px;height:100px;border-radius:14px;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+    .cria-mixer .delete{position:absolute;top:6px;right:8px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:20px;height:20px;cursor:pointer;font-size:12px;line-height:20px}
+    .cria-mixer .delete:hover{background:#ef4444}
+    .cria-mixer .swatch-info{width:100%;margin-top:8px;font-size:11px;color:#333}
+    .cria-mixer .name-input{width:100%;font-size:12px;border:none;text-align:center;border-bottom:1px solid #e5e7eb;outline:none;padding:2px 0}
+    .cria-mixer .recipe-line{margin-top:6px;font-size:11px;color:#6b7280;white-space:nowrap;text-align:center}
 
-  /* Mix-summary */
-  .cria-summary{margin-top:10px}
-  .cria-stack{
-    height:10px; border-radius:999px; overflow:hidden; background:#eef2f7;
-    box-shadow:inset 0 1px 2px rgba(0,0,0,.08); width:80%; margin:0 auto 10px; display:flex
-  }
-  .cria-seg{height:100%}
-  .seg-c{background:#22c1ff}
-  .seg-m{background:#ff3aa0}
-  .seg-y{background:#ffe04d}
-  .seg-w{background:#e5e7eb}
+    .cria-mixer .help-line{font-size:12px;color:#555;margin-top:4px}
 
-  .cria-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
-  .chip{
-    display:inline-flex;align-items:center;gap:6px;
-    border:1px solid #e4e7ec;border-radius:999px;padding:6px 10px;background:#fff;
-    font-size:13px; color:#111827; box-shadow:0 1px 2px rgba(16,24,40,.06)
-  }
-  .chip strong{font-weight:700; min-width:34px; text-align:right}
-  .dot{width:10px;height:10px;border-radius:50%}
-  .dot-c{background:#22c1ff}
-  .dot-m{background:#ff3aa0}
-  .dot-y{background:#ffe04d; border:1px solid #e9b300}
-  .dot-w{background:#ffffff; border:1px solid #d1d5db}
+    /* Legend – låt radbrytas så den inte rinner ut */
+    .cria-mixer .cria-legend{
+      display:flex; flex-direction:row; align-items:center; justify-content:center;
+      gap:10px; flex-wrap:wrap; margin-top:8px; width:100%;
+    }
+    .cria-mixer .cria-legend__item{display:flex;align-items:center;gap:8px}
+    .cria-mixer .cria-legend__icon{width:18px;height:18px;color:#555;flex:0 0 auto}
+    .cria-mixer .cria-legend__text{font-size:13px;color:#222}
 
-  .chip.hex{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  .chip .tiny{width:14px;height:14px;border-radius:4px;border:1px solid #e5e7eb}
+    /* Mix-summary */
+    .cria-summary{margin-top:10px}
+    .cria-stack{
+      height:10px; border-radius:999px; overflow:hidden; background:#eef2f7;
+      box-shadow:inset 0 1px 2px rgba(0,0,0,.08); width:80%; margin:0 auto 10px; display:flex
+    }
+    .cria-seg{height:100%}
+    .seg-c{background:#22c1ff}
+    .seg-m{background:#ff3aa0}
+    .seg-y{background:#ffe04d}
+    .seg-w{background:#e5e7eb}
 
-  /* Modal */
-  .cria-mixer dialog.help-modal{max-width:600px;border:none;border-radius:14px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-  .cria-mixer dialog.help-modal::backdrop{background:rgba(0,0,0,.35)}
-  .cria-mixer .help-title{font-size:20px;margin:0 0 10px}
-  .cria-mixer .help-p{font-size:14px;line-height:1.5;text-align:left;margin:8px 0}
-  .cria-mixer .help-list{margin:8px 0 0 18px;text-align:left;font-size:14px}
-  .cria-mixer .help-actions{display:flex;justify-content:flex-end;margin-top:12px}
-  .cria-mixer .close-btn{padding:8px 12px;border:none;border-radius:10px;background:#4a5568;color:#fff;cursor:pointer}
-  .cria-mixer .close-btn:hover{background:#2d3748}
-</style>
+    .cria-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+    .chip{
+      display:inline-flex;align-items:center;gap:6px;
+      border:1px solid #e4e7ec;border-radius:999px;padding:6px 10px;background:#fff;
+      font-size:13px; color:#111827; box-shadow:0 1px 2px rgba(16,24,40,.06)
+    }
+    .chip strong{font-weight:700; min-width:34px; text-align:right}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .dot-c{background:#22c1ff}
+    .dot-m{background:#ff3aa0}
+    .dot-y{background:#ffe04d; border:1px solid #e9b300}
+    .dot-w{background:#ffffff; border:1px solid #d1d5db}
+
+    .chip.hex{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .chip .tiny{width:14px;height:14px;border-radius:4px;border:1px solid #e5e7eb}
+
+    /* Modal */
+    .cria-mixer dialog.help-modal{max-width:600px;border:none;border-radius:14px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .cria-mixer dialog.help-modal::backdrop{background:rgba(0,0,0,.35)}
+    .cria-mixer .help-title{font-size:20px;margin:0 0 10px}
+    .cria-mixer .help-p{font-size:14px;line-height:1.5;text-align:left;margin:8px 0}
+    .cria-mixer .help-list{margin:8px 0 0 18px;text-align:left;font-size:14px}
+    .cria-mixer .help-actions{display:flex;justify-content:flex-end;margin-top:12px}
+    .cria-mixer .close-btn{padding:8px 12px;border:none;border-radius:10px;background:#4a5568;color:#fff;cursor:pointer}
+    .cria-mixer .close-btn:hover{background:#2d3748}
+
+    /* Större, lättare sliders (iOS/Safari m.fl.) */
+    .cria-mixer input[type="range"]{
+      -webkit-appearance:none; appearance:none;
+      height:6px; border-radius:999px; background:#e5e7eb;
+    }
+    .cria-mixer input[type="range"]::-webkit-slider-thumb{
+      -webkit-appearance:none; appearance:none;
+      width:28px; height:28px; border-radius:50%;
+      background:#fff; border:1px solid #d0d5dd;
+      box-shadow:0 2px 4px rgba(0,0,0,.12);
+      margin-top:-11px; /* centrerar över spåret */
+    }
+    .cria-mixer input[type="range"]::-moz-range-thumb{
+      width:28px; height:28px; border-radius:50%;
+      background:#fff; border:1px solid #d0d5dd;
+    }
+
+    /* Mobilanpassning */
+    @media (max-width: 480px){
+      .cria-mixer{ margin:12px; }
+      .cria-mixer .mixer{ padding:16px 14px; }
+      .cria-mixer label{ width:120px; font-size:16px; }
+      .cria-mixer input[type="number"]{ width:72px; padding:8px; font-size:16px; }
+      .cria-mixer #cria-result{ width:100%; height:180px; }
+    }
+  </style>
 </head>
 <body>
 <div class="cria-mixer">
@@ -221,7 +247,7 @@
     <h2 id="cria-helpTitle" class="help-title">Hur fungerar Crias färgblandare?</h2>
     <p class="help-p">Blanda Cyan, Magenta och Gul. Vi räknar enligt kulörteori (Yule–Nielsen–Neugebauer) så att blandningen efterliknar riktig färg.</p>
     <ul class="help-list">
-      <li><strong>C/M/Y:</strong> dra reglagen – andelarna normaliseras.</li>
+      <li><strong>C/M/Y:</strong> dra reglagen - andelarna normaliseras.</li>
       <li><strong>Vit:</strong> ljusar upp blandningen beroende på hur stor andel vitt du tillsätter.</li>
       <li><strong>Opacitet:</strong> styr transparens. Lågt transparent, högt opak.</li>
       <li><strong>Visa i delar/ml/%:</strong> samma mix i olika mått.</li>
@@ -234,14 +260,14 @@
 </div>
 
 <script>
-/* ------------------ Yule–Nielsen–Neugebauer-mix ------------------ */
+/* ------------------ Yule-Nielsen-Neugebauer-mix ------------------ */
 const PRIMARIES = {
   W:[1.00,1.00,1.00], C:[0.20,0.80,0.95], M:[0.90,0.10,0.60], Y:[0.98,0.90,0.10],
   R:[0.90,0.15,0.15], G:[0.20,0.80,0.20], B:[0.15,0.20,0.80], K:[0.08,0.08,0.08]
 };
 const YN_N = 3;
 
-/* Justerbar styrka för vitts “ljusa upp”-effekt (1.0 = linjärt) */
+/* Justerbar styrka för vitts ljusa upp-effekt (1.0 = linjärt) */
 const WHITE_POWER = 1.2;
 
 function ynnMix(c,m,y,n=YN_N){
@@ -276,7 +302,7 @@ const density=el("cria-density"), densityNum=el("cria-densityNum");
   [cyan,cyanNum], [magenta,magentaNum], [yellow,yellowNum], [white,whiteNum], [density,densityNum]
 ].forEach(([range,num])=>{
   range.addEventListener("input", ()=>{ if(num){num.value=range.value;} update(); });
-  if(num && range!==density){ // densityNum hanteras redan ovan, ingen konvertering där
+  if(num && range!==density){
     num.addEventListener("input", ()=>{ applyNumberEdit(range, num); });
   }
   if(num === densityNum){
@@ -289,24 +315,22 @@ function applyNumberEdit(targetRange, inputEl){
   const val = parseFloat(inputEl.value);
   if(isNaN(val) || val < 0) return;
 
-  // nuvarande totalsumma i "delar"
   const totalParts = parseFloat(cyan.value) + parseFloat(magenta.value) +
                      parseFloat(yellow.value) + parseFloat(white.value) || 1;
 
   let newParts;
   if(viewMode === "delar"){
-    newParts = val; // direkt
+    newParts = val;
   } else if(viewMode === "ml"){
     const totalMl = parseFloat(el("cria-totalMl").value) || 100;
     newParts = (val / totalMl) * totalParts;
-  } else { // procent
+  } else {
     newParts = (val / 100) * totalParts;
   }
 
-  // klampa och uppdatera range + tillhörande number (i delar)
   newParts = Math.max(0, Math.min(SLIDER_MAX, newParts));
   targetRange.value = newParts.toFixed(1);
-  // spegla till range->number kopplingen
+
   if(inputEl === cyanNum) cyanNum.value = targetRange.value;
   if(inputEl === magentaNum) magentaNum.value = targetRange.value;
   if(inputEl === yellowNum) yellowNum.value = targetRange.value;
@@ -326,7 +350,6 @@ function setView(m){
   update();
 }
 
-function clamp01(x){ return Math.max(0,Math.min(1,x)); }
 function rgbToHex(r,g,b){ return "#"+[r,g,b].map(v=>Math.round(v).toString(16).padStart(2,"0")).join(""); }
 
 /* Skapa chips-html */
@@ -342,7 +365,6 @@ function update(){
   const cRaw=parseFloat(cyan.value), mRaw=parseFloat(magenta.value), yRaw=parseFloat(yellow.value), wRaw=parseFloat(white.value);
   const k=parseFloat(density.value||"1");
 
-  // Normaliserade andelar för kulörteori (CMY)
   const sumCMY=cRaw+mRaw+yRaw;
   let Cshare=0,Mshare=0,Yshare=0;
   if(sumCMY>0){ Cshare=cRaw/sumCMY; Mshare=mRaw/sumCMY; Yshare=yRaw/sumCMY; }
@@ -350,7 +372,6 @@ function update(){
   const C=effCover(Cshare,k), M=effCover(Mshare,k), Y=effCover(Yshare,k);
   let [R,G,B]=ynnMix(C,M,Y,YN_N);
 
-  // Vit ljusar upp efter andel delar
   const totalParts = cRaw + mRaw + yRaw + wRaw || 1;
   let wShare = wRaw / totalParts;
   wShare = 1 - Math.pow(1 - wShare, WHITE_POWER);
@@ -362,7 +383,6 @@ function update(){
   const hex=rgbToHex(R*255,G*255,B*255);
   el("cria-result").style.background = hex;
 
-  // Sammanfattning – visningsvärden
   const totalAll=cRaw+mRaw+yRaw+wRaw || 1;
   let unit="delar";
   let cVal=cRaw, mVal=mRaw, yVal=yRaw, wVal=wRaw;
@@ -387,7 +407,6 @@ function update(){
     wVal=(+wRaw.toFixed(1)).toString();
   }
 
-  // Uppdatera stapel (andel av total inkl vit)
   const tot = cRaw+mRaw+yRaw+wRaw || 1;
   const pC = (cRaw/tot)*100, pM=(mRaw/tot)*100, pY=(yRaw/tot)*100, pW=(wRaw/tot)*100;
   el("segC").style.width = pC + "%";
@@ -395,7 +414,6 @@ function update(){
   el("segY").style.width = pY + "%";
   el("segW").style.width = pW + "%";
 
-  // Bygg chips
   const chipsHTML = [
     chip("C","chip-c",cVal,unit),
     chip("M","chip-m",mVal,unit),
@@ -405,7 +423,6 @@ function update(){
   ].join("");
   el("cria-chips").innerHTML = chipsHTML;
 
-  // Visa rätt enhet i sifferfälten till höger
   renderNumberValues();
 }
 
@@ -426,7 +443,7 @@ function renderNumberValues(){
     magentaNum.value= ((mRaw/totalAll)*totalMl).toFixed(1);
     yellowNum.value = ((yRaw/totalAll)*totalMl).toFixed(1);
     whiteNum.value  = ((wRaw/totalAll)*totalMl).toFixed(1);
-  } else { // procent
+  } else {
     cyanNum.value   = ((cRaw/totalAll)*100).toFixed(1);
     magentaNum.value= ((mRaw/totalAll)*100).toFixed(1);
     yellowNum.value = ((yRaw/totalAll)*100).toFixed(1);
