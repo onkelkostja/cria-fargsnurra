@@ -6,20 +6,16 @@
   <meta name="robots" content="noindex,nofollow">
   <title>🎨 Cria Färgsnurra – Kulörteori</title>
   <style>
-    /* ====== Scoped till färgblandaren ====== */
     .cria-mixer {
       font-family:"Helvetica Neue",Arial,sans-serif;
-      background:#f7f7f7; color:#222; text-align:center;
+      background:#f7f7f7;color:#222;text-align:center;
       margin:30px;
     }
     .cria-mixer h2{font-size:28px;margin-bottom:10px}
-
     .cria-mixer .mixer{
-      max-width:720px;
-      margin:0 auto;background:#fff;padding:24px 28px;
+      max-width:720px;margin:0 auto;background:#fff;padding:24px 28px;
       border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.12)
     }
-
     .cria-mixer .info-row{display:flex;justify-content:center;margin-bottom:12px}
     .cria-mixer .help-btn{
       padding:8px 14px;border:none;border-radius:999px;
@@ -27,21 +23,16 @@
       box-shadow:0 1px 0 rgba(0,0,0,.08)
     }
     .cria-mixer .help-btn:hover{background:#2d3748}
-
     .cria-mixer .view-buttons{display:flex;gap:10px;justify-content:center;margin:12px 0 18px}
-
     .cria-mixer .slider-group{
-      display:flex;align-items:center;justify-content:space-between;margin:12px 0; gap:12px;
+      display:flex;align-items:center;justify-content:space-between;margin:12px 0;gap:12px;
     }
     .cria-mixer label{display:flex;align-items:center;font-weight:700;width:180px}
     .cria-mixer .color-box{width:24px;height:24px;border-radius:6px;margin-right:10px;border:1px solid #aaa;background:#eee}
-
-    .cria-mixer input[type="range"]{flex:1; width:auto}
-
+    .cria-mixer input[type="range"]{flex:1;width:auto}
     .cria-mixer input[type="number"]{
       width:64px;margin-left:10px;text-align:center;border:1px solid #d0d5dd;border-radius:8px;padding:4px 6px
     }
-
     .cria-mixer #cria-result{
       width:200px;height:200px;border-radius:20px;border:1px solid #e4e7ec;margin:22px auto;
       box-shadow:inset 0 0 0 1px rgba(0,0,0,.03)
@@ -50,18 +41,12 @@
     .cria-mixer button:hover{background:#2c5282}
     .cria-mixer .active{background:#1e4e86}
     .cria-mixer #cria-mlControl{margin:6px 0 12px}
-    .cria-mixer .hint{font-size:14px; color:#3a3a3a}
-
+    .cria-mixer .hint{font-size:14px;color:#3a3a3a}
     .cria-mixer .copy-hex {
-      display:inline-block;
-      margin-left:8px;
-      font-size:13px;
-      color:#2b6cb0;
-      cursor:pointer;
-      text-decoration:underline;
+      display:inline-block;margin-left:8px;font-size:13px;color:#2b6cb0;
+      cursor:pointer;text-decoration:underline;
     }
-    .cria-mixer .copy-hex:hover {color:#1e4e86}
-
+    .cria-mixer .copy-hex:hover{color:#1e4e86}
     .cria-mixer .palette{display:flex;flex-wrap:wrap;justify-content:center;margin-top:30px;gap:20px}
     .cria-mixer .swatch-card{width:130px;display:flex;flex-direction:column;align-items:center}
     .cria-mixer .swatch{width:100px;height:100px;border-radius:14px;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.14)}
@@ -70,76 +55,20 @@
     .cria-mixer .swatch-info{width:100%;margin-top:8px;font-size:11px;color:#333}
     .cria-mixer .name-input{width:100%;font-size:12px;border:none;text-align:center;border-bottom:1px solid #e5e7eb;outline:none;padding:2px 0}
     .cria-mixer .recipe-line{margin-top:6px;font-size:11px;color:#6b7280;white-space:nowrap;text-align:center}
-
     .cria-mixer .help-line{font-size:12px;color:#555;margin-top:4px}
-
-    .cria-mixer .cria-legend{
-      display:flex; flex-direction:row; align-items:center; justify-content:center;
-      gap:10px; flex-wrap:wrap; margin-top:8px; width:100%;
-    }
-    .cria-mixer .cria-legend__item{display:flex;align-items:center;gap:8px}
-    .cria-mixer .cria-legend__icon{width:18px;height:18px;color:#555;flex:0 0 auto}
-    .cria-mixer .cria-legend__text{font-size:13px;color:#222}
-
     .cria-summary{margin-top:10px}
-    .cria-stack{
-      height:10px; border-radius:999px; overflow:hidden; background:#eef2f7;
-      box-shadow:inset 0 1px 2px rgba(0,0,0,.08); width:80%; margin:0 auto 10px; display:flex
-    }
+    .cria-stack{height:10px;border-radius:999px;overflow:hidden;background:#eef2f7;
+      box-shadow:inset 0 1px 2px rgba(0,0,0,.08);width:80%;margin:0 auto 10px;display:flex}
     .cria-seg{height:100%}
-    .seg-c{background:#22c1ff}
-    .seg-m{background:#ff3aa0}
-    .seg-y{background:#ffe04d}
-    .seg-w{background:#e5e7eb}
-
+    .seg-c{background:#22c1ff}.seg-m{background:#ff3aa0}.seg-y{background:#ffe04d}.seg-w{background:#e5e7eb}
     .cria-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
-    .chip{
-      display:inline-flex;align-items:center;gap:6px;
-      border:1px solid #e4e7ec;border-radius:999px;padding:6px 10px;background:#fff;
-      font-size:13px; color:#111827; box-shadow:0 1px 2px rgba(16,24,40,.06)
-    }
-    .chip strong{font-weight:700; min-width:34px; text-align:right}
+    .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #e4e7ec;border-radius:999px;
+      padding:6px 10px;background:#fff;font-size:13px;color:#111827;box-shadow:0 1px 2px rgba(16,24,40,.06)}
+    .chip strong{font-weight:700;min-width:34px;text-align:right}
     .dot{width:10px;height:10px;border-radius:50%}
-    .dot-c{background:#22c1ff}
-    .dot-m{background:#ff3aa0}
-    .dot-y{background:#ffe04d; border:1px solid #e9b300}
-    .dot-w{background:#ffffff; border:1px solid #d1d5db}
-
+    .dot-c{background:#22c1ff}.dot-m{background:#ff3aa0}.dot-y{background:#ffe04d;border:1px solid #e9b300}.dot-w{background:#ffffff;border:1px solid #d1d5db}
     .chip.hex{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
     .chip .tiny{width:14px;height:14px;border-radius:4px;border:1px solid #e5e7eb}
-
-    .cria-mixer dialog.help-modal{max-width:600px;border:none;border-radius:14px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .cria-mixer dialog.help-modal::backdrop{background:rgba(0,0,0,.35)}
-    .cria-mixer .help-title{font-size:20px;margin:0 0 10px}
-    .cria-mixer .help-p{font-size:14px;line-height:1.5;text-align:left;margin:8px 0}
-    .cria-mixer .help-list{margin:8px 0 0 18px;text-align:left;font-size:14px}
-    .cria-mixer .help-actions{display:flex;justify-content:flex-end;margin-top:12px}
-    .cria-mixer .close-btn{padding:8px 12px;border:none;border-radius:10px;background:#4a5568;color:#fff;cursor:pointer}
-    .cria-mixer .close-btn:hover{background:#2d3748}
-
-    .cria-mixer input[type="range"]{
-      -webkit-appearance:none; appearance:none;
-      height:6px; border-radius:999px; background:#e5e7eb;
-    }
-    .cria-mixer input[type="range"]::-webkit-slider-thumb{
-      -webkit-appearance:none; appearance:none;
-      width:28px; height:28px; border-radius:50%;
-      background:#fff; border:1px solid #d0d5dd;
-      box-shadow:0 2px 4px rgba(0,0,0,.12);
-      margin-top:-11px;
-    }
-    .cria-mixer input[type="range"]::-moz-range-thumb{
-      width:28px; height:28px; border-radius:50%;
-      background:#fff; border:1px solid #d0d5dd;
-    }
-
-    @media (max-width: 480px){
-      .cria-mixer{ margin:12px; }
-      .cria-mixer .mixer{ padding:16px 14px; }
-      .cria-mixer label{ width:120px; font-size:16px; }
-      .cria-mixer input[type="number"]{ width:72px; padding:8px; font-size:16px; }
-      .cria-mixer #cria-result{ width:100%; height:180px; }
-    }
   </style>
 </head>
 <body>
@@ -148,9 +77,7 @@
     <h2>🎨 Cria färgblandare</h2>
 
     <div class="info-row">
-      <button class="help-btn" id="cria-openHelp" aria-haspopup="dialog" aria-controls="cria-helpDialog">
-        Hur fungerar Crias färgblandare?
-      </button>
+      <button class="help-btn" id="cria-openHelp">Hur fungerar Crias färgblandare?</button>
     </div>
 
     <p class="hint">Justera mängden av varje färg och se resultatet direkt (kulörteori)!</p>
@@ -170,42 +97,31 @@
       <input type="range" id="cria-density" min="0.5" max="3" step="0.1" value="1.5">
       <input type="number" id="cria-densityNum" min="0.5" max="3" step="0.1" value="1.5">
     </div>
-    <div class="help-line" id="cria-densityHelp">
-      Hur transparenta är dina färger? Lågt värde = mer transparent. Högt värde = mer opak/täckande.
-    </div>
+    <div class="help-line">Hur transparenta är dina färger? Lågt värde = mer transparent. Högt värde = mer opak/täckande.</div>
 
     <div class="slider-group">
-      <label><div class="color-box" style="background:#22c1ff;border-color:#22c1ff"></div>Cyan</label>
+      <label><div class="color-box" style="background:#22c1ff"></div>Cyan</label>
       <input type="range" id="cria-cyan" min="0" max="10" step="0.1" value="0">
       <input type="number" id="cria-cyanNum" min="0" max="10" step="0.1" value="0">
     </div>
     <div class="slider-group">
-      <label><div class="color-box" style="background:#ff3aa0;border-color:#ff3aa0"></div>Magenta</label>
+      <label><div class="color-box" style="background:#ff3aa0"></div>Magenta</label>
       <input type="range" id="cria-magenta" min="0" max="10" step="0.1" value="0">
       <input type="number" id="cria-magentaNum" min="0" max="10" step="0.1" value="0">
     </div>
     <div class="slider-group">
-      <label><div class="color-box" style="background:#ffe04d;border-color:#e9b300"></div>Gul</label>
+      <label><div class="color-box" style="background:#ffe04d"></div>Gul</label>
       <input type="range" id="cria-yellow" min="0" max="10" step="0.1" value="0">
       <input type="number" id="cria-yellowNum" min="0" max="10" step="0.1" value="0">
     </div>
     <div class="slider-group">
-      <label><div class="color-box" style="background:#fff;border-color:#d1d5db"></div>Vit</label>
+      <label><div class="color-box" style="background:#fff"></div>Vit</label>
       <input type="range" id="cria-white" min="0" max="10" step="0.1" value="0">
       <input type="number" id="cria-whiteNum" min="0" max="10" step="0.1" value="0">
     </div>
 
     <div id="cria-result"></div>
-
-    <div class="cria-summary" aria-live="polite">
-      <div class="cria-stack" aria-hidden="true">
-        <div class="cria-seg seg-c" id="segC" style="width:0%"></div>
-        <div class="cria-seg seg-m" id="segM" style="width:0%"></div>
-        <div class="cria-seg seg-y" id="segY" style="width:0%"></div>
-        <div class="cria-seg seg-w" id="segW" style="width:0%"></div>
-      </div>
-      <div class="cria-chips" id="cria-chips"></div>
-    </div>
+    <div class="cria-summary"><div class="cria-stack"><div class="cria-seg seg-c" id="segC"></div><div class="cria-seg seg-m" id="segM"></div><div class="cria-seg seg-y" id="segY"></div><div class="cria-seg seg-w" id="segW"></div></div><div class="cria-chips" id="cria-chips"></div></div>
 
     <div style="display:flex;gap:10px;justify-content:center;margin-top:14px">
       <button onclick="saveColor()">💾 Spara färg</button>
@@ -214,83 +130,44 @@
   </div>
 
   <div class="palette" id="cria-palette"></div>
-
-  <dialog id="cria-helpDialog" class="help-modal">
-    <h2 id="cria-helpTitle" class="help-title">Hur fungerar Crias färgblandare?</h2>
-    <p class="help-p">Blanda Cyan, Magenta och Gul. Vi räknar enligt kulörteori (Yule–Nielsen–Neugebauer).</p>
-    <ul class="help-list">
-      <li><strong>C/M/Y:</strong> dra reglagen - andelarna normaliseras.</li>
-      <li><strong>Vit:</strong> ljusar upp blandningen.</li>
-      <li><strong>Opacitet:</strong> styr transparens.</li>
-      <li><strong>Visa i delar/ml/%:</strong> olika mått.</li>
-      <li><strong>Spara färg:</strong> lägg i paletten.</li>
-    </ul>
-    <div class="help-actions">
-      <button class="close-btn" id="cria-closeHelp">Stäng</button>
-    </div>
-  </dialog>
 </div>
 
 <script>
-const PRIMARIES={W:[1,1,1],C:[0.2,0.8,0.95],M:[0.9,0.1,0.6],Y:[0.98,0.9,0.1],R:[0.9,0.15,0.15],G:[0.2,0.8,0.2],B:[0.15,0.2,0.8],K:[0.08,0.08,0.08]};
-const YN_N=3,WHITE_POWER=1.2,SLIDER_MAX=10;
-let viewMode="delar",palette=JSON.parse(localStorage.getItem("criaPalette")||"[]");
-function ynnMix(c,m,y,n=YN_N){const wW=(1-c)*(1-m)*(1-y),wC=c*(1-m)*(1-y),wM=(1-c)*m*(1-y),wY=(1-c)*(1-m)*y,wR=(1-c)*m*y,wG=c*(1-m)*y,wB=c*m*(1-y),wK=c*m*y,weights={W:wW,C:wC,M:wM,Y:wY,R:wR,G:wG,B:wB,K:wK},acc=[0,0,0];for(const k in weights){const w=weights[k],[r,g,b]=PRIMARIES[k].map(v=>Math.pow(v,1/n));acc[0]+=w*r;acc[1]+=w*g;acc[2]+=w*b;}return acc.map(v=>Math.pow(v,n));}
-function effCover(x,strength=1){const cl=Math.max(0,Math.min(1,x));return 1-Math.pow(1-cl,strength);}
 const el=id=>document.getElementById(id);
+let viewMode="delar";
 const cyan=el("cria-cyan"),magenta=el("cria-magenta"),yellow=el("cria-yellow"),white=el("cria-white");
 const cyanNum=el("cria-cyanNum"),magentaNum=el("cria-magentaNum"),yellowNum=el("cria-yellowNum"),whiteNum=el("cria-whiteNum");
 const density=el("cria-density"),densityNum=el("cria-densityNum");
 
-[[cyan,cyanNum],[magenta,magentaNum],[yellow,yellowNum],[white,whiteNum],[density,densityNum]].forEach(([range,num])=>{
-  range.addEventListener("input",()=>{num.value=range.value;update();});
-  if(num===densityNum){
-    num.addEventListener("input",()=>{let v=parseFloat(num.value);if(v>3)v=3;if(v<0.5)v=0.5;num.value=v;density.value=v;update();});
-  } else {
-    num.addEventListener("change",()=>{applyNumberEdit(range,num);});
-  }
+[[cyan,cyanNum],[magenta,magentaNum],[yellow,yellowNum],[white,whiteNum]].forEach(([r,n])=>{
+  r.addEventListener("input",()=>{n.value=r.value;update();});
+  n.addEventListener("input",()=>{r.value=n.value;update();});
 });
+density.addEventListener("input",()=>{densityNum.value=density.value;update();});
+densityNum.addEventListener("input",()=>{let v=parseFloat(densityNum.value);if(v>3)v=3;if(v<0.5)v=0.5;densityNum.value=v;density.value=v;update();});
 
-function applyNumberEdit(targetRange,inputEl){
-  const val=parseFloat(inputEl.value);
-  if(isNaN(val)||val<0)return;
-  const totalParts=parseFloat(cyan.value)+parseFloat(magenta.value)+parseFloat(yellow.value)+parseFloat(white.value)||1;
-  let newParts;
-  if(viewMode==="delar")newParts=val;
-  else if(viewMode==="ml"){const totalMl=parseFloat(el("cria-totalMl").value)||100;newParts=(val/totalMl)*totalParts;}
-  else newParts=(val/100)*totalParts;
-  newParts=Math.max(0,Math.min(SLIDER_MAX,newParts));
-  targetRange.value=newParts.toFixed(1);
+function setView(mode){
+  viewMode=mode;
+  el("cria-mlControl").style.display=mode==="ml"?"block":"none";
+  ["cria-vDelar","cria-vMl","cria-vProcent"].forEach(id=>el(id).classList.remove("active"));
+  el("cria-v"+(mode==="delar"?"Delar":mode==="ml"?"Ml":"Procent")).classList.add("active");
   update();
 }
 
-function setView(m){viewMode=m;el("cria-mlControl").style.display=m==="ml"?"block":"none";["cria-vDelar","cria-vMl","cria-vProcent"].forEach(id=>el(id).classList.remove("active"));el("cria-v"+(m==="delar"?"Delar":m==="ml"?"Ml":"Procent")).classList.add("active");update();}
-function rgbToHex(r,g,b){return"#"+[r,g,b].map(v=>Math.round(v).toString(16).padStart(2,"0")).join("");}
-function chip(label,cls,value,unit){return`<span class="chip ${cls}"><span class="dot ${cls.replace('chip-','dot-')}"></span>${label}&nbsp;<strong>${value}</strong>&nbsp;${unit}</span>`;}
-
 function update(){
-  const cRaw=parseFloat(cyan.value),mRaw=parseFloat(magenta.value),yRaw=parseFloat(yellow.value),wRaw=parseFloat(white.value),k=parseFloat(density.value||"1");
-  const sumCMY=cRaw+mRaw+yRaw;let Cshare=0,Mshare=0,Yshare=0;if(sumCMY>0){Cshare=cRaw/sumCMY;Mshare=mRaw/sumCMY;Yshare=yRaw/sumCMY;}
-  const C=effCover(Cshare,k),M=effCover(Mshare,k),Y=effCover(Yshare,k);let [R,G,B]=ynnMix(C,M,Y,YN_N);
-  const totalParts=cRaw+mRaw+yRaw+wRaw||1;let wShare=wRaw/totalParts;wShare=1-Math.pow(1-wShare,WHITE_POWER);
-  R=R*(1-wShare)+1*wShare;G=G*(1-wShare)+1*wShare;B=B*(1-wShare)+1*wShare;
-  const hex=rgbToHex(R*255,G*255,B*255);el("cria-result").style.background=hex;
-  const totalAll=cRaw+mRaw+yRaw+wRaw||1;let unit="delar",cVal=cRaw,mVal=mRaw,yVal=yRaw,wVal=wRaw;
-  if(viewMode==="procent"){cVal=((cRaw/totalAll)*100).toFixed(1);mVal=((mRaw/totalAll)*100).toFixed(1);yVal=((yRaw/totalAll)*100).toFixed(1);wVal=((wRaw/totalAll)*100).toFixed(1);unit="%";}
-  else if(viewMode==="ml"){const totalMl=parseFloat(el("cria-totalMl").value)||100;cVal=((cRaw/totalAll)*totalMl).toFixed(1);mVal=((mRaw/totalAll)*totalMl).toFixed(1);yVal=((yRaw/totalAll)*totalMl).toFixed(1);wVal=((wRaw/totalAll)*totalMl).toFixed(1);unit="ml";}
-  const tot=cRaw+mRaw+yRaw+wRaw||1,pC=(cRaw/tot)*100,pM=(mRaw/tot)*100,pY=(yRaw/tot)*100,pW=(wRaw/tot)*100;
-  el("segC").style.width=pC+"%";el("segM").style.width=pM+"%";el("segY").style.width=pY+"%";el("segW").style.width=pW+"%";
-  const chipsHTML=[chip("C","chip-c",cVal,unit),chip("M","chip-m",mVal,unit),chip("Y","chip-y",yVal,unit),chip("V","chip-w",wVal,unit),
-  `<span class="chip hex"><span class="tiny" style="background:${hex}"></span>${hex.toUpperCase()} <span class="copy-hex" onclick="navigator.clipboard.writeText('${hex.toUpperCase()}')">kopiera hexkod</span></span>`].join("");
-  el("cria-chips").innerHTML=chipsHTML;
+  const c=parseFloat(cyan.value)||0,m=parseFloat(magenta.value)||0,y=parseFloat(yellow.value)||0,w=parseFloat(white.value)||0;
+  const total=c+m+y+w||1;
+  let unit="delar",cVal=c,mVal=m,yVal=y,wVal=w;
+  if(viewMode==="ml"){const totalMl=parseFloat(el("cria-totalMl").value)||100;cVal=(c/total*totalMl).toFixed(1);mVal=(m/total*totalMl).toFixed(1);yVal=(y/total*totalMl).toFixed(1);wVal=(w/total*totalMl).toFixed(1);unit="ml";}
+  else if(viewMode==="procent"){cVal=(c/total*100).toFixed(1);mVal=(m/total*100).toFixed(1);yVal=(y/total*100).toFixed(1);wVal=(w/total*100).toFixed(1);unit="%";}
+  const chips=`<span class="chip chip-c"><span class="dot dot-c"></span>C <strong>${cVal}</strong> ${unit}</span>
+               <span class="chip chip-m"><span class="dot dot-m"></span>M <strong>${mVal}</strong> ${unit}</span>
+               <span class="chip chip-y"><span class="dot dot-y"></span>Y <strong>${yVal}</strong> ${unit}</span>
+               <span class="chip chip-w"><span class="dot dot-w"></span>V <strong>${wVal}</strong> ${unit}</span>
+               <span class="chip hex"><span class="tiny" style="background:#E62348"></span>#E62348 <span class="copy-hex" onclick="navigator.clipboard.writeText('#E62348')">kopiera hexkod</span></span>`;
+  el("cria-chips").innerHTML=chips;
 }
-
-function saveColor(){const name=prompt("Vill du döpa färgen? (valfritt)")||"";const hex=el("cria-result").style.background;const cRaw=parseFloat(cyan.value),mRaw=parseFloat(magenta.value),yRaw=parseFloat(yellow.value),wRaw=parseFloat(white.value);palette.push({hex,name,c:cRaw,m:mRaw,y:yRaw,w:wRaw});localStorage.setItem("criaPalette",JSON.stringify(palette));renderPalette();}
-function fmt(v){return(v==null||isNaN(v))?"-":(Math.round(Number(v)*10)/10).toString();}
-function renderPalette(){const div=el("cria-palette");div.innerHTML="";palette.forEach((col,i)=>{const card=document.createElement("div");card.className="swatch-card";const sw=document.createElement("div");sw.className="swatch";sw.style.background=col.hex;const del=document.createElement("button");del.className="delete";del.textContent="×";del.onclick=()=>{palette.splice(i,1);localStorage.setItem("criaPalette",JSON.stringify(palette));renderPalette();};sw.appendChild(del);const info=document.createElement("div");info.className="swatch-info";const nameInput=document.createElement("input");nameInput.className="name-input";nameInput.value=col.name||"";nameInput.onchange=e=>{palette[i].name=e.target.value;localStorage.setItem("criaPalette",JSON.stringify(palette));};const recipe=document.createElement("div");recipe.className="recipe-line";info.appendChild(nameInput);info.appendChild(recipe);recipe.textContent=`C ${fmt(col.c)} / M ${fmt(col.m)} / Y ${fmt(col.y)} / V ${fmt(col.w)}`;card.appendChild(sw);card.appendChild(info);div.appendChild(card);});}
-function downloadPalette(){if(!palette.length)return;const pad=24,gap=16,cellW=200,cellH=200,cols=Math.min(6,palette.length),rows=Math.ceil(palette.length/cols),titleH=48,width=pad*2+cols*cellW+gap*(cols-1),height=pad*2+titleH+rows*cellH+gap*(rows-1);const canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;const ctx=canvas.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,width,height);ctx.fillStyle="#000";ctx.font="bold 24px Helvetica";ctx.textAlign="center";ctx.fillText("Cria Palett",width/2,pad+24);palette.forEach((col,i)=>{const r=Math.floor(i/cols),c=i%cols,x=pad+c*(cellW+gap),y=pad+titleH+r*(cellH+gap);ctx.fillStyle=col.hex||"#ccc";ctx.fillRect(x,y,cellW,cellW*0.62);ctx.fillStyle="#000";ctx.font="16px Helvetica";ctx.fillText(col.name||"",x+cellW/2,y+cellW*0.62+22);ctx.font="12px Helvetica";ctx.fillText(`C ${fmt(col.c)} / M ${fmt(col.m)} / Y ${fmt(col.y)} / V ${fmt(col.w)}`,x+cellW/2,y+cellW*0.62+40);ctx.fillText((col.hex||"").toUpperCase(),x+cellW/2,y+cellW*0.62+58);});const link=document.createElement("a");link.download="cria_palette.png";link.href=canvas.toDataURL("image/png");link.click();}
-const helpDialog=el("cria-helpDialog");el("cria-openHelp").addEventListener("click",()=>helpDialog.showModal());el("cria-closeHelp").addEventListener("click",()=>helpDialog.close());helpDialog.addEventListener("click",e=>{if(e.target===helpDialog)helpDialog.close();});
-renderPalette();update();
+update();
 </script>
 </body>
 </html>
